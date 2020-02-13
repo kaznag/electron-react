@@ -1,0 +1,44 @@
+{
+  "name": "electron-react",
+  "version": "0.1.0",
+  "main": "main.js",
+  "author": "Kaz NAGAMINE",
+  "license": "MIT",
+  "scripts": {
+    "build": "node ./scripts/package.js && webpack --config ./config/webpack.config.prod.js",
+    "start": "electron dist/prod",
+    "build:dev": "node ./scripts/package.js && webpack --config ./config/webpack.config.dev.js",
+    "start:dev": "electron dist/dev",
+    "pack:l": "yarn build && electron-builder --l --config ./config/electron-builder.yml",
+    "pack:w": "yarn build && electron-builder --w --config ./config/electron-builder.yml"
+  },
+  "keywords": [
+    "electron"
+  ],
+  "dependencies": {
+    "electron-store": "^5.1.0",
+    "react": "^16.12.0",
+    "react-dom": "^16.12.0"
+  },
+  "devDependencies": {
+    "@types/react": "^16.9.19",
+    "@types/react-dom": "^16.9.5",
+    "copy-webpack-plugin": "^5.1.1",
+    "electron": "6",
+    "electron-builder": "21",
+    "html-webpack-plugin": "^3.2.0",
+    "husky": "3",
+    "ts-loader": "^6.2.1",
+    "typescript": "^3.7.5",
+    "webpack": "^4.41.5",
+    "webpack-cli": "^3.3.10",
+    "webpack-merge": "^4.2.2",
+    "webpack-node-externals": "^1.7.2",
+    "webpack-obfuscator": "0.19"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "node ./scripts/package.js && git add ./src/package.json"
+    }
+  }
+}

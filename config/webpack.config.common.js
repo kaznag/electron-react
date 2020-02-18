@@ -49,7 +49,7 @@ const renderer = {
   module: {
     rules: [
       {
-        test: /.tsx?$/,
+        test: /\.tsx?$/,
         include: [
           srcPath,
         ],

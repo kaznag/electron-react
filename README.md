@@ -3,7 +3,7 @@ This is a practice project.
 
 ## Environment
 
-- node v8.16.2
+- node v12.14.0
 - yarn 1.21.1
 
 ## Usage

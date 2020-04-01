@@ -25,7 +25,7 @@ class MainWindow {
       height: size.height,
       minWidth: minSize.width,
       minHeight: minSize.height,
-      title: app.getName(),
+      title: app.name,
       show: false,
       webPreferences: {
         nodeIntegration: true,

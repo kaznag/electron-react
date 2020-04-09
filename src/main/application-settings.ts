@@ -38,16 +38,16 @@ class ApplicationSettings {
           y: 0,
         },
         size: {
-          width: 1280,
-          height: 720,
+          width: 800,
+          height: 600,
         },
         center: true,
         isMaximized: false,
       },
       styles: {
         minimumSize: {
-          width: 640,
-          height: 360,
+          width: 320,
+          height: 240,
         },
       },
     },

@@ -5,6 +5,7 @@ const nodeExternals = require('webpack-node-externals');
 
 const rootPath = path.resolve(__dirname, './../');
 const srcPath = path.resolve(rootPath, 'src');
+const modulePath = path.resolve(rootPath, 'node_modules');
 
 const main = {
   entry: path.resolve(srcPath, 'main/main.ts'),
@@ -13,12 +14,12 @@ const main = {
   },
   module: {
     rules: [{
-      test: /\.tsx?$/,
+      test: /\.ts$/,
       include: [
         srcPath,
       ],
       exclude: [
-        path.resolve(rootPath, 'node_modules'),
+        modulePath,
       ],
       loader: 'ts-loader',
     }]
@@ -26,6 +27,11 @@ const main = {
   resolve: {
     extensions: ['.js', '.ts']
   },
+  plugins: [
+    new CopyWebpackPlugin([
+      { from: path.resolve(srcPath, 'package.json') }
+    ]),
+  ],
   target: 'electron-main',
   externals: [
     nodeExternals(),
@@ -34,11 +40,6 @@ const main = {
     __filename: false,
     __dirname: false,
   },
-  plugins: [
-    new CopyWebpackPlugin([
-      { from: path.resolve(srcPath, 'package.json') }
-    ])
-  ]
 };
 
 const renderer = {
@@ -49,12 +50,12 @@ const renderer = {
   module: {
     rules: [
       {
-        test: /\.tsx?$/,
+        test: /\.tsx$/,
         include: [
           srcPath,
         ],
         exclude: [
-          path.resolve(rootPath, 'node_modules'),
+          modulePath,
         ],
         loader: 'ts-loader',
       },
@@ -63,6 +64,12 @@ const renderer = {
   resolve: {
     extensions: ['.js', '.ts', '.jsx', '.tsx']
   },
+  plugins: [
+    new HtmlWebpackPlugin({
+      template: path.resolve(rootPath, './src/renderer/index.html'),
+      filename: 'index.html',
+    }),
+  ],
   target: 'electron-renderer',
   externals: [
     nodeExternals(),
@@ -71,12 +78,6 @@ const renderer = {
     __dirname: false,
     __filename: false
   },
-  plugins: [
-    new HtmlWebpackPlugin({
-      template: path.resolve(rootPath, './src/renderer/index.html'),
-      filename: 'index.html',
-    })
-  ]
 };
 
 module.exports = {

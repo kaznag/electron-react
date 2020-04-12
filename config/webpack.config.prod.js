@@ -1,6 +1,7 @@
 const merge = require('webpack-merge');
 const path = require('path');
 const JavaScriptObfuscator = require('webpack-obfuscator');
+const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const common = require('./webpack.config.common');
 
 const outputPath = path.resolve(common.rootPath, 'dist/prod');
@@ -22,9 +23,25 @@ const renderer = merge(common.renderer, {
   output: {
     path: outputPath,
   },
+  module: {
+    rules: [
+      {
+        test: /\.scss$/,
+        use: [
+          MiniCssExtractPlugin.loader,
+          'css-loader',
+          'sass-loader',
+        ],
+      },
+    ],
+  },
   plugins: [
     new JavaScriptObfuscator({
       rotateUnicodeArray: true
+    }),
+    new MiniCssExtractPlugin({
+      filename: '[name].css',
+      chunkFilename: '[id].css',
     }),
   ]
 });

@@ -1,0 +1,16 @@
+
+$title-bar-height: 30px;
+$contents-margin: 8px;
+
+html,
+body {
+  width: 100%;
+  height: 100%;
+  margin: 0px;
+}
+
+.contents {
+  margin: 8px;
+  width: calc(100% - #{$contents-margin} * 2);
+  height: calc(100% - #{$title-bar-height} - #{$contents-margin} * 2);
+}

@@ -1,6 +1,7 @@
-import { app } from 'electron'
+import { app, ipcMain } from 'electron'
 import { MainWindow } from './main-window';
 import { ApplicationSettings } from './application-settings';
+import { ChannelKey } from '../common/channel-key';
 
 class Application {
 
@@ -18,6 +19,8 @@ class Application {
     this.app.on('ready', () => this.onReady());
     this.app.on('window-all-closed', () => this.onWindowAllClosed());
     this.app.on('second-instance', () => this.onSecondInstance());
+
+    ipcMain.on(ChannelKey.windowCloseRequest, () => this.mainWindow!.close());
   }
 
   private onReady(): void {

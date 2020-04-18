@@ -29,6 +29,7 @@ class MainWindow {
       show: false,
       frame: false,
       webPreferences: {
+        devTools: this.isDev,
         nodeIntegration: true,
       }
     };

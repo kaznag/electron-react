@@ -1,8 +1,9 @@
 import { app, BrowserWindow, globalShortcut } from 'electron';
 import * as path from 'path';
+import { EventEmitter } from 'events';
 import { ApplicationSettings } from './application-settings';
 
-class MainWindow {
+class MainWindow extends EventEmitter {
 
   private readonly devToolsShortcutKey = 'CmdOrCtrl+Shift+I';
 
@@ -17,6 +18,8 @@ class MainWindow {
   constructor(
     private appSettings: ApplicationSettings
   ) {
+    super();
+
     const size = this.appSettings.getWindowSize();
     const minSize = this.appSettings.getWindowMinimumSize();
 
@@ -57,6 +60,8 @@ class MainWindow {
     this.window.on('closed', () => this.onClosed());
     this.window.on('resize', () => this.onResize());
     this.window.on('move', () => this.onMove());
+    this.window.on('maximize', () => this.emit('maximize'));
+    this.window.on('unmaximize', () => this.emit('unmaximize'));
 
     this.registerShortcut();
   }
@@ -71,6 +76,27 @@ class MainWindow {
 
   close(): void {
     this.window!.close();
+  }
+
+  maximizeRestore(): void {
+    if (this.window!.isMaximized()) {
+      this.window!.unmaximize();
+    } else {
+      this.window!.maximize();
+    }
+  }
+
+  minimize(): void {
+    this.window!.minimize();
+  }
+
+
+  send(channel: string, ...args: any[]): void {
+    if (args.length === 1) {
+      this.window!.webContents.send(channel, args[0]);
+    } else {
+      this.window!.webContents.send(channel, args);
+    }
   }
 
   private onClose(): void {

@@ -25,7 +25,7 @@ $title-bar-button-width: 45px;
   left: $drag-region-margin;
   top: $drag-region-margin;
   height: calc(#{$title-bar-height} - #{$drag-region-margin});
-  width: calc(100% - #{$drag-region-margin} - #{$title-bar-button-width});
+  width: calc(100% - #{$drag-region-margin} - #{$title-bar-button-width} * 3);
   -webkit-app-region: drag;
 }
 
@@ -72,4 +72,88 @@ $title-bar-button-width: 45px;
 
 .title-bar.button.close:hover:after {
   transform: rotate(-45deg);
+}
+
+.title-bar.button.maximize {
+  position: relative;
+  background-color: transparent;
+}
+
+.title-bar.button.maximize:before {
+  position: absolute;
+  top: 10px;
+  left: 17px;
+  width: 8px;
+  height: 8px;
+  content: " ";
+  border: 1px solid #000000;
+}
+
+.title-bar.button.maximize:hover {
+  background-color: #e5e5e5;
+}
+
+.title-bar.button.restore {
+  position: relative;
+  background-color: transparent;
+}
+
+.title-bar.button.restore:before {
+  position: absolute;
+  top: 12px;
+  left: 17px;
+  width: 6px;
+  height: 6px;
+  content: " ";
+  border: 1px solid #000000;
+}
+
+.title-bar.button.restore:after {
+  position: absolute;
+  top: 10px;
+  left: 19px;
+  width: 1px;
+  height: 1px;
+  content: " ";
+  background: black;
+  box-shadow:
+    0px 1px,
+    1px 0px,
+    2px 0px,
+    3px 0px,
+    4px 0px,
+    5px 0px,
+    6px 0px,
+    7px 0px,
+    7px 1px,
+    7px 2px,
+    7px 3px,
+    7px 4px,
+    7px 5px,
+    7px 6px,
+    7px 7px,
+    6px 7px,
+}
+
+.title-bar.button.restore:hover {
+  background-color: #e5e5e5;
+}
+
+.title-bar.button.minimize {
+  position: relative;
+  background-color: transparent;
+}
+
+.title-bar.button.minimize:before {
+  position: absolute;
+  top: 15px;
+  left: 17px;
+  width: 10px;
+  height: 1px;
+  content: " ";
+  border-top: 1px solid #000000;
+}
+
+.title-bar.button.minimize:hover {
+  background-color: #e5e5e5;
 }

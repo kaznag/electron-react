@@ -20,11 +20,17 @@ class Application {
     this.app.on('window-all-closed', () => this.onWindowAllClosed());
     this.app.on('second-instance', () => this.onSecondInstance());
 
-    ipcMain.on(ChannelKey.windowCloseRequest, () => this.mainWindow!.close());
+    ipcMain.on(ChannelKey.windowCloseRequest, () => this.onIpcWindowCloseRequest());
+    ipcMain.on(ChannelKey.windowMaximizeRestoreRequest, () => this.onIpcWindowMaximizeRestoreRequest());
+    ipcMain.on(ChannelKey.windowMinimizeRequest, () => this.onIpcWindowMinimizeRequest());
   }
 
   private onReady(): void {
     this.mainWindow = new MainWindow(this.appSettings!);
+
+    this.mainWindow.on('maximize', () => this.onWindowMaximize());
+    this.mainWindow.on('unmaximize', () => this.onWindowUnmaximize());
+
     this.mainWindow.show();
   }
 
@@ -38,6 +44,30 @@ class Application {
     if (this.mainWindow) {
       this.mainWindow.show();
     }
+  }
+
+  private onWindowMaximize(): void {
+    this.sendWindowMaximize(true);
+  }
+
+  private onWindowUnmaximize(): void {
+    this.sendWindowMaximize(false);
+  }
+
+  private onIpcWindowCloseRequest(): void {
+    this.mainWindow!.close();
+  }
+
+  private onIpcWindowMaximizeRestoreRequest(): void {
+    this.mainWindow!.maximizeRestore();
+  }
+
+  private onIpcWindowMinimizeRequest(): void {
+    this.mainWindow!.minimize();
+  }
+
+  private sendWindowMaximize(isMaximized: boolean): void {
+    this.mainWindow!.send(ChannelKey.windowMaximize, isMaximized);
   }
 }
 

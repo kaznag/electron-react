@@ -23,7 +23,7 @@
   "devDependencies": {
     "@types/react": "^16.9.19",
     "@types/react-dom": "^16.9.5",
-    "copy-webpack-plugin": "^5.1.1",
+    "copy-webpack-plugin": "^6.1.0",
     "css-loader": "^4.2.2",
     "electron": "9",
     "electron-builder": "^22.8.0",

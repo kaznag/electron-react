@@ -28,9 +28,11 @@ const main = {
     extensions: ['.js', '.ts']
   },
   plugins: [
-    new CopyWebpackPlugin([
-      { from: path.resolve(srcPath, 'package.json') }
-    ]),
+    new CopyWebpackPlugin({
+      patterns: [
+        { from: path.resolve(srcPath, 'package.json') }
+      ]
+    }),
   ],
   target: 'electron-main',
   externals: [

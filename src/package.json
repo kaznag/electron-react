@@ -3,7 +3,7 @@
   "version": "0.1.0",
   "main": "main.js",
   "dependencies": {
-    "electron-store": "^5.1.0",
+    "electron-store": "^6.0.0",
     "react": "^16.13.1",
     "react-dom": "^16.13.1"
   }

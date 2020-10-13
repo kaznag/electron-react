@@ -34,6 +34,7 @@ class MainWindow extends EventEmitter {
       webPreferences: {
         devTools: this.isDev,
         nodeIntegration: true,
+        enableRemoteModule: true,
       }
     };
 

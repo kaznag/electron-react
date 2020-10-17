@@ -2,6 +2,7 @@ import { app, ipcMain } from 'electron'
 import { MainWindow } from './main-window';
 import { ApplicationSettings } from './application-settings';
 import { ChannelKey } from '../common/channel-key';
+import { WindowParameter } from '../common/message';
 
 class Application {
 
@@ -23,6 +24,8 @@ class Application {
     ipcMain.on(ChannelKey.windowCloseRequest, () => this.onIpcWindowCloseRequest());
     ipcMain.on(ChannelKey.windowMaximizeRestoreRequest, () => this.onIpcWindowMaximizeRestoreRequest());
     ipcMain.on(ChannelKey.windowMinimizeRequest, () => this.onIpcWindowMinimizeRequest());
+    ipcMain.once(ChannelKey.windowInitialized, () => this.onIpcWindowInitialized());
+    ipcMain.handle(ChannelKey.windowParameterRequest, () => this.onWindowParameterRequest());
   }
 
   private onReady(): void {
@@ -30,8 +33,6 @@ class Application {
 
     this.mainWindow.on('maximize', () => this.onWindowMaximize());
     this.mainWindow.on('unmaximize', () => this.onWindowUnmaximize());
-
-    this.mainWindow.show();
   }
 
   private onWindowAllClosed(): void {
@@ -64,6 +65,21 @@ class Application {
 
   private onIpcWindowMinimizeRequest(): void {
     this.mainWindow!.minimize();
+  }
+
+  private onIpcWindowInitialized(): void {
+    if (this.appSettings!.getWindowIsMaximized()) {
+      this.mainWindow!.maximize();
+    } else {
+      this.mainWindow!.show();
+    }
+  }
+
+  private onWindowParameterRequest(): WindowParameter {
+    return {
+      isMaximized: this.mainWindow!.isMaximized(),
+      title: this.app.name,
+    };
   }
 
   private sendWindowMaximize(isMaximized: boolean): void {

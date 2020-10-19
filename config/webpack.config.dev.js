@@ -42,7 +42,6 @@ const renderer = merge(common.renderer, {
   devtool: 'inline-source-map',
 });
 
-
 const preload = merge(common.preload, {
   mode: 'development',
   output: {

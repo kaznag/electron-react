@@ -1,9 +1,10 @@
 # electron-react
+
 This is a practice project.
 
 ## Environment
 
-- node v12.16.2
+- node v12.18.3
 - yarn 1.22.4
 
 ## Usage

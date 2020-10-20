@@ -5,12 +5,16 @@
   "author": "Kaz NAGAMINE",
   "license": "MIT",
   "scripts": {
+    "start": "electron ./dist/prod",
     "build": "node ./scripts/package.js && webpack --config ./config/webpack.config.prod.js",
-    "start": "electron dist/prod",
+    "clean": "rimraf ./dist/prod",
+    "rebuild": "yarn clean && yarn build",
+    "start:dev": "electron ./dist/dev",
     "build:dev": "node ./scripts/package.js && webpack --config ./config/webpack.config.dev.js",
-    "start:dev": "electron dist/dev",
-    "pack:l": "yarn build && electron-builder --l --config ./config/electron-builder.yml",
-    "pack:w": "yarn build && electron-builder --w --config ./config/electron-builder.yml"
+    "clean:dev": "rimraf ./dist/dev",
+    "rebuild:dev": "yarn clean:dev && yarn build:dev",
+    "pack:l": "yarn rebuild && electron-builder --l --config ./config/electron-builder.yml",
+    "pack:w": "yarn rebuild && electron-builder --w --config ./config/electron-builder.yml"
   },
   "keywords": [
     "electron"
@@ -31,6 +35,7 @@
     "husky": "^4.3.0",
     "mini-css-extract-plugin": "^0.11.0",
     "node-sass": "^4.14.1",
+    "rimraf": "^3.0.2",
     "sass-loader": "^10.0.2",
     "style-loader": "^1.2.1",
     "ts-loader": "^8.0.3",

@@ -11,15 +11,11 @@ type TitleBarProps = {
 }
 
 const TitleBar: React.FC<TitleBarProps> = props => {
-  const button = props.isMaximized ?
-    <div className="title-bar button restore" onClick={props.onMaximizeRestoreButtonClick}></div> :
-    <div className="title-bar button maximize" onClick={props.onMaximizeRestoreButtonClick}></div>;
-
   return (
     <div className="title-bar">
       <div className="title-bar drag-region"></div>
       <div className="title-bar button close" onClick={props.onCloseButtonClick}></div>
-      {button}
+      <div className={'title-bar button ' + (props.isMaximized ? 'restore' : 'maximize')} onClick={props.onMaximizeRestoreButtonClick}></div>
       <div className="title-bar button minimize" onClick={props.onMinimizeButtonClick}></div>
       <div className="title-bar window-title">{props.windowTitle}</div>
     </div>

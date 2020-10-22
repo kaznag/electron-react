@@ -13,11 +13,11 @@ type TitleBarProps = {
 const TitleBar: React.FC<TitleBarProps> = props => {
   return (
     <div className="title-bar">
-      <div className="title-bar drag-region"></div>
+      <div className="drag-region"></div>
       <div className="title-bar button close" onClick={props.onCloseButtonClick}></div>
       <div className={'title-bar button ' + (props.isMaximized ? 'restore' : 'maximize')} onClick={props.onMaximizeRestoreButtonClick}></div>
       <div className="title-bar button minimize" onClick={props.onMinimizeButtonClick}></div>
-      <div className="title-bar window-title">{props.windowTitle}</div>
+      <div className="window-title">{props.windowTitle}</div>
     </div>
   );
 };

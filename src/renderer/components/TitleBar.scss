@@ -8,25 +8,26 @@ $title-bar-button-width: 45px;
   height: $title-bar-height;
 }
 
-.title-bar.window-title {
+.window-title {
+  @extend .title-bar;
   font-size: 12px;
   text-align: center;
   line-height: $title-bar-height;
 }
 
-.title-bar.button {
-  float: right;
-  width: $title-bar-button-width;
-  height: 100%;
-}
-
-.title-bar.drag-region {
+.drag-region {
   position: absolute;
   left: $drag-region-margin;
   top: $drag-region-margin;
   height: calc(#{$title-bar-height} - #{$drag-region-margin});
   width: calc(100% - #{$drag-region-margin} - #{$title-bar-button-width} * 3);
   -webkit-app-region: drag;
+}
+
+.title-bar.button {
+  float: right;
+  width: $title-bar-button-width;
+  height: 100%;
 }
 
 .title-bar.button.close {

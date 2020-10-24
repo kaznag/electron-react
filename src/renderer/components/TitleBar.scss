@@ -9,7 +9,6 @@ $title-bar-button-width: 45px;
 }
 
 .window-title {
-  @extend .title-bar;
   font-size: 12px;
   text-align: center;
   line-height: $title-bar-height;

@@ -23,6 +23,10 @@ $title-bar-button-width: 45px;
   line-height: $title-bar-height;
 }
 
+.window-title.blur {
+  color: #999999;
+}
+
 .title-bar.button {
   float: right;
   width: $title-bar-button-width;

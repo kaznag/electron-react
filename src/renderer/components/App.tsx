@@ -1,13 +1,11 @@
 import React from 'react';
-// import { ipcRenderer, IpcRendererEvent } from 'electron';
-
 import './App.scss';
 import TitleBar from './TitleBar';
-// import { ChannelKey } from '../../common/channel-key';
 
 type Props = {};
 
 type State = {
+  isFocused: boolean;
   isMaximized: boolean;
   windowTitle: string;
 };
@@ -18,6 +16,7 @@ class App extends React.Component<Props, State> {
     super(props);
 
     this.state = {
+      isFocused: false,
       isMaximized: false,
       windowTitle: '',
     };
@@ -26,11 +25,13 @@ class App extends React.Component<Props, State> {
     this.onMaximizeRestoreButtonClick = this.onMaximizeRestoreButtonClick.bind(this);
     this.onMinimizeButtonClick = this.onMinimizeButtonClick.bind(this);
 
+    window.api.onWindowFocus(isFocused => this.onWindowFocus(isFocused));
     window.api.onWindowMaximize(isMaximize => this.onWindowMaximize(isMaximize));
 
     window.api.invokeWindowParameterRequest()
       .then(windowParameter => {
         this.setState({
+          isFocused: windowParameter.isFocused,
           isMaximized: windowParameter.isMaximized,
           windowTitle: windowParameter.title,
         });
@@ -41,7 +42,8 @@ class App extends React.Component<Props, State> {
   render() {
     return (
       <div className='app'>
-        <TitleBar isMaximized={this.state.isMaximized}
+        <TitleBar isFocused={this.state.isFocused}
+          isMaximized={this.state.isMaximized}
           windowTitle={this.state.windowTitle}
           onCloseButtonClick={this.onCloseButtonClick}
           onMaximizeRestoreButtonClick={this.onMaximizeRestoreButtonClick}
@@ -63,6 +65,10 @@ class App extends React.Component<Props, State> {
 
   private onMinimizeButtonClick(): void {
     window.api.sendWindowMinimizeRequest();
+  }
+
+  private onWindowFocus(isFocused: boolean): void {
+    this.setState({ isFocused: isFocused });
   }
 
   private onWindowMaximize(isMaximized: boolean): void {

@@ -31,20 +31,16 @@ $title-bar-button-width: 45px;
   float: right;
   width: $title-bar-button-width;
   height: 100%;
-}
-
-.title-bar.button.close {
   position: relative;
   background-color: transparent;
 }
 
+.title-bar.button.close {
+  @extend .title-bar.button;
+}
+
 .title-bar.button.close:before, .title-bar.title-bar.button.close:after {
-  position: absolute;
-  left: 16px;
-  width: 13px;
-  height: 1px;
-  top: 14px;
-  content: " ";
+  @extend .close-button-base;
   background-color: #000000;
 }
 
@@ -61,21 +57,17 @@ $title-bar-button-width: 45px;
 }
 
 .title-bar.button.close:hover:before, .title-bar.button.close:hover:after {
+  @extend .close-button-base;
+  background-color: #ffffff;
+}
+
+.close-button-base {
   position: absolute;
   left: 16px;
   width: 13px;
   height: 1px;
   top: 14px;
   content: " ";
-  background-color: #ffffff;
-}
-
-.title-bar.button.close:hover:before {
-  transform: rotate(45deg);
-}
-
-.title-bar.button.close:hover:after {
-  transform: rotate(-45deg);
 }
 
 .title-bar.button.maximize {

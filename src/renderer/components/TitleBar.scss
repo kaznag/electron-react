@@ -35,13 +35,22 @@ $title-bar-button-width: 45px;
   background-color: transparent;
 }
 
+@mixin close-button-base($color) {
+  position: absolute;
+  left: 16px;
+  width: 13px;
+  height: 1px;
+  top: 14px;
+  content: " ";
+  background-color: $color;
+}
+
 .title-bar.button.close {
   @extend .title-bar.button;
 }
 
 .title-bar.button.close:before, .title-bar.title-bar.button.close:after {
-  @extend .close-button-base;
-  background-color: #000000;
+  @include close-button-base(#000000);
 }
 
 .title-bar.button.close:before {
@@ -57,17 +66,7 @@ $title-bar-button-width: 45px;
 }
 
 .title-bar.button.close:hover:before, .title-bar.button.close:hover:after {
-  @extend .close-button-base;
-  background-color: #ffffff;
-}
-
-.close-button-base {
-  position: absolute;
-  left: 16px;
-  width: 13px;
-  height: 1px;
-  top: 14px;
-  content: " ";
+  @include close-button-base(#ffffff);
 }
 
 .title-bar.button.maximize {

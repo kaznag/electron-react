@@ -15,7 +15,7 @@ const TitleBar: React.FC<TitleBarProps> = props => {
   return (
     <div className="title-bar">
       <div className="drag-region"></div>
-      <div className="title-bar button close" onClick={props.onCloseButtonClick}></div>
+      <div className={'close-button' + (!props.isFocused ? ' blur' : '')} onClick={props.onCloseButtonClick}></div>
       <div className={'title-bar button ' + (props.isMaximized ? 'restore' : 'maximize')} onClick={props.onMaximizeRestoreButtonClick}></div>
       <div className="title-bar button minimize" onClick={props.onMinimizeButtonClick}></div>
       <div className={'window-title' + (!props.isFocused ? ' blur' : '')}>{props.windowTitle}</div>

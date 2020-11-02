@@ -77,22 +77,25 @@ $title-bar-button-width: 45px;
   @include close-button-base(#ffffff);
 }
 
-.title-bar.button.maximize {
-  position: relative;
-  background-color: transparent;
-}
-
-.title-bar.button.maximize:before {
-  position: absolute;
+@mixin maximize-button-base($color) {
+ position: absolute;
   top: 10px;
   left: 17px;
   width: 8px;
   height: 8px;
   content: " ";
-  border: 1px solid #000000;
+  border: 1px solid $color;
 }
 
-.title-bar.button.maximize:hover {
+.maximize-button {
+  @extend .title-bar.button;
+}
+
+.maximize-button:before {
+  @include maximize-button-base(#000000);
+}
+
+.maximize-button:hover {
   background-color: #e5e5e5;
 }
 

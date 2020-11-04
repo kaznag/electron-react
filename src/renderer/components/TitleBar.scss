@@ -99,6 +99,14 @@ $title-bar-button-width: 45px;
   background-color: #e5e5e5;
 }
 
+.maximize-button.blur:before {
+  @include maximize-button-base(#999999);
+}
+
+.maximize-button.blur:hover:before {
+  @include maximize-button-base(#000000);
+}
+
 .title-bar.button.restore {
   position: relative;
   background-color: transparent;

@@ -107,49 +107,56 @@ $title-bar-button-width: 45px;
   @include maximize-button-base(#000000);
 }
 
-.title-bar.button.restore {
-  position: relative;
-  background-color: transparent;
-}
-
-.title-bar.button.restore:before {
+@mixin restore-button-base-before($color) {
   position: absolute;
   top: 12px;
   left: 17px;
   width: 6px;
   height: 6px;
   content: " ";
-  border: 1px solid #000000;
+  border: 1px solid $color;
 }
 
-.title-bar.button.restore:after {
+@mixin restore-button-base-after($color) {
   position: absolute;
   top: 10px;
   left: 19px;
   width: 1px;
   height: 1px;
   content: " ";
-  background: black;
+  background: $color;
   box-shadow:
-    0px 1px,
-    1px 0px,
-    2px 0px,
-    3px 0px,
-    4px 0px,
-    5px 0px,
-    6px 0px,
-    7px 0px,
-    7px 1px,
-    7px 2px,
-    7px 3px,
-    7px 4px,
-    7px 5px,
-    7px 6px,
-    7px 7px,
-    6px 7px,
+    0px 1px $color,
+    1px 0px $color,
+    2px 0px $color,
+    3px 0px $color,
+    4px 0px $color,
+    5px 0px $color,
+    6px 0px $color,
+    7px 0px $color,
+    7px 1px $color,
+    7px 2px $color,
+    7px 3px $color,
+    7px 4px $color,
+    7px 5px $color,
+    7px 6px $color,
+    7px 7px $color,
+    6px 7px $color,
 }
 
-.title-bar.button.restore:hover {
+.restore-button {
+  @extend .title-bar.button;
+}
+
+.restore-button:before {
+  @include restore-button-base-before(#000000);
+}
+
+.restore-button:after {
+  @include restore-button-base-after(#000000);
+}
+
+.restore-button:hover {
   background-color: #e5e5e5;
 }
 

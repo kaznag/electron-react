@@ -160,6 +160,22 @@ $title-bar-button-width: 45px;
   background-color: #e5e5e5;
 }
 
+.restore-button.blur:before {
+  @include restore-button-base-before(#999999);
+}
+
+.restore-button.blur:after {
+  @include restore-button-base-after(#999999);
+}
+
+.restore-button.blur:hover:before {
+  @include restore-button-base-before(#000000);
+}
+
+.restore-button.blur:hover:after {
+  @include restore-button-base-after(#000000);
+}
+
 .title-bar.button.minimize {
   position: relative;
   background-color: transparent;

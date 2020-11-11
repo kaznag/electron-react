@@ -6,6 +6,7 @@ $title-bar-button-width: 45px;
 .title-bar {
   width: 100%;
   height: $title-bar-height;
+  -webkit-user-select: none;
 }
 
 .drag-region {
@@ -78,7 +79,7 @@ $title-bar-button-width: 45px;
 }
 
 @mixin maximize-button-base($color) {
- position: absolute;
+  position: absolute;
   top: 10px;
   left: 17px;
   width: 8px;
@@ -176,21 +177,24 @@ $title-bar-button-width: 45px;
   @include restore-button-base-after(#000000);
 }
 
-.title-bar.button.minimize {
-  position: relative;
-  background-color: transparent;
-}
-
-.title-bar.button.minimize:before {
+@mixin minimize-button-base($color) {
   position: absolute;
   top: 15px;
   left: 17px;
   width: 10px;
   height: 1px;
   content: " ";
-  border-top: 1px solid #000000;
+  border-top: 1px solid $color;
 }
 
-.title-bar.button.minimize:hover {
+.minimize-button {
+  @extend .title-bar.button;
+}
+
+.minimize-button:before {
+  @include minimize-button-base(#000000);
+}
+
+.minimize-button:hover {
   background-color: #e5e5e5;
 }

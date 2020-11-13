@@ -198,3 +198,11 @@ $title-bar-button-width: 45px;
 .minimize-button:hover {
   background-color: #e5e5e5;
 }
+
+.minimize-button.blur:before {
+  @include minimize-button-base(#999999);
+}
+
+.minimize-button.blur:hover:before {
+  @include minimize-button-base(#000000);
+}

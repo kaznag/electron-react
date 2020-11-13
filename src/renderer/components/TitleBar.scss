@@ -1,11 +1,11 @@
 
-$title-bar-height: 30px;
+$height: 30px;
 $drag-region-margin: 4px;
-$title-bar-button-width: 45px;
+$button-width: 45px;
 
 .title-bar {
   width: 100%;
-  height: $title-bar-height;
+  height: $height;
   -webkit-user-select: none;
 }
 
@@ -13,24 +13,24 @@ $title-bar-button-width: 45px;
   position: absolute;
   left: $drag-region-margin;
   top: $drag-region-margin;
-  height: calc(#{$title-bar-height} - #{$drag-region-margin});
-  width: calc(100% - #{$drag-region-margin} - #{$title-bar-button-width} * 3);
+  height: calc(#{$height} - #{$drag-region-margin});
+  width: calc(100% - #{$drag-region-margin} - #{$button-width} * 3);
   -webkit-app-region: drag;
 }
 
 .window-title {
   font-size: 12px;
   text-align: center;
-  line-height: $title-bar-height;
+  line-height: $height;
 }
 
 .window-title.blur {
   color: #999999;
 }
 
-.title-bar.button {
+.button {
   float: right;
-  width: $title-bar-button-width;
+  width: $button-width;
   height: 100%;
   position: relative;
   background-color: transparent;
@@ -47,7 +47,7 @@ $title-bar-button-width: 45px;
 }
 
 .close-button {
-  @extend .title-bar.button;
+  @extend .button;
 }
 
 .close-button:before, .close-button:after {
@@ -89,7 +89,7 @@ $title-bar-button-width: 45px;
 }
 
 .maximize-button {
-  @extend .title-bar.button;
+  @extend .button;
 }
 
 .maximize-button:before {
@@ -146,7 +146,7 @@ $title-bar-button-width: 45px;
 }
 
 .restore-button {
-  @extend .title-bar.button;
+  @extend .button;
 }
 
 .restore-button:before {
@@ -188,7 +188,7 @@ $title-bar-button-width: 45px;
 }
 
 .minimize-button {
-  @extend .title-bar.button;
+  @extend .button;
 }
 
 .minimize-button:before {

@@ -1,27 +1,26 @@
-
 $height: 30px;
 $drag-region-margin: 4px;
 $button-width: 45px;
 
 .title-bar {
-  width: 100%;
   height: $height;
   -webkit-user-select: none;
+  width: 100%;
 }
 
 .drag-region {
-  position: absolute;
-  left: $drag-region-margin;
-  top: $drag-region-margin;
-  height: calc(#{$height} - #{$drag-region-margin});
-  width: calc(100% - #{$drag-region-margin} - #{$button-width} * 3);
   -webkit-app-region: drag;
+  height: calc(#{$height} - #{$drag-region-margin});
+  left: $drag-region-margin;
+  position: absolute;
+  top: $drag-region-margin;
+  width: calc(100% - #{$drag-region-margin} - #{$button-width} * 3);
 }
 
 .window-title {
   font-size: 12px;
-  text-align: center;
   line-height: $height;
+  text-align: center;
 }
 
 .window-title.blur {
@@ -29,21 +28,21 @@ $button-width: 45px;
 }
 
 .button {
+  background-color: transparent;
   float: right;
-  width: $button-width;
   height: 100%;
   position: relative;
-  background-color: transparent;
+  width: $button-width;
 }
 
 @mixin close-button-base($color) {
-  position: absolute;
-  left: 16px;
-  width: 13px;
-  height: 1px;
-  top: 14px;
-  content: " ";
   background-color: $color;
+  content: " ";
+  height: 1px;
+  left: 16px;
+  position: absolute;
+  top: 14px;
+  width: 13px;
 }
 
 .close-button {
@@ -79,13 +78,13 @@ $button-width: 45px;
 }
 
 @mixin maximize-button-base($color) {
+  border: 1px solid $color;
+  content: " ";
+  height: 8px;
+  left: 17px;
   position: absolute;
   top: 10px;
-  left: 17px;
   width: 8px;
-  height: 8px;
-  content: " ";
-  border: 1px solid $color;
 }
 
 .maximize-button {
@@ -109,22 +108,16 @@ $button-width: 45px;
 }
 
 @mixin restore-button-base-before($color) {
+  border: 1px solid $color;
+  content: " ";
+  height: 6px;
+  left: 17px;
   position: absolute;
   top: 12px;
-  left: 17px;
   width: 6px;
-  height: 6px;
-  content: " ";
-  border: 1px solid $color;
 }
 
 @mixin restore-button-base-after($color) {
-  position: absolute;
-  top: 10px;
-  left: 19px;
-  width: 1px;
-  height: 1px;
-  content: " ";
   background: $color;
   box-shadow:
     0px 1px $color,
@@ -142,7 +135,13 @@ $button-width: 45px;
     7px 5px $color,
     7px 6px $color,
     7px 7px $color,
-    6px 7px $color,
+    6px 7px $color,;
+  content: " ";
+  height: 1px;
+  left: 19px;
+  position: absolute;
+  top: 10px;
+  width: 1px
 }
 
 .restore-button {
@@ -178,13 +177,13 @@ $button-width: 45px;
 }
 
 @mixin minimize-button-base($color) {
+  border-top: 1px solid $color;
+  content: " ";
+  height: 1px;
+  left: 17px;
   position: absolute;
   top: 15px;
-  left: 17px;
   width: 10px;
-  height: 1px;
-  content: " ";
-  border-top: 1px solid $color;
 }
 
 .minimize-button {

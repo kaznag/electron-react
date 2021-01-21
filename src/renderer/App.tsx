@@ -1,6 +1,6 @@
 import React from 'react';
 import './App.scss';
-import TitleBar from './TitleBar';
+import TitleBar from './components/TitleBar';
 
 type Props = {};
 

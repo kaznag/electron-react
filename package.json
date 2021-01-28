@@ -60,7 +60,7 @@
   },
   "lint-staged": {
     "./src/**/*.{css,sass,scss}": [
-      "npm run format:css"
+      "stylelint --config ./config/.stylelintrc.json --fix"
     ]
   }
 }

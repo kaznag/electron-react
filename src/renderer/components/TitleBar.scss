@@ -49,7 +49,8 @@ $button-width: 45px;
   @extend .button;
 }
 
-.close-button:before, .close-button:after {
+.close-button:before,
+.close-button:after {
   @include close-button-base(#000000);
 }
 
@@ -65,15 +66,18 @@ $button-width: 45px;
   background-color: #e81123;
 }
 
-.close-button:hover:before, .close-button:hover:after {
+.close-button:hover:before,
+.close-button:hover:after {
   @include close-button-base(#ffffff);
 }
 
-.close-button.blur:before, .close-button.blur:after {
+.close-button.blur:before,
+.close-button.blur:after {
   @include close-button-base(#999999);
 }
 
-.close-button.blur:hover:before, .close-button.blur:hover:after {
+.close-button.blur:hover:before,
+.close-button.blur:hover:after {
   @include close-button-base(#ffffff);
 }
 
@@ -119,29 +123,15 @@ $button-width: 45px;
 
 @mixin restore-button-base-after($color) {
   background: $color;
-  box-shadow:
-    0px 1px $color,
-    1px 0px $color,
-    2px 0px $color,
-    3px 0px $color,
-    4px 0px $color,
-    5px 0px $color,
-    6px 0px $color,
-    7px 0px $color,
-    7px 1px $color,
-    7px 2px $color,
-    7px 3px $color,
-    7px 4px $color,
-    7px 5px $color,
-    7px 6px $color,
-    7px 7px $color,
-    6px 7px $color,;
+  box-shadow: 0px 1px $color, 1px 0px $color, 2px 0px $color, 3px 0px $color, 4px 0px $color,
+    5px 0px $color, 6px 0px $color, 7px 0px $color, 7px 1px $color, 7px 2px $color, 7px 3px $color,
+    7px 4px $color, 7px 5px $color, 7px 6px $color, 7px 7px $color, 6px 7px $color;
   content: " ";
   height: 1px;
   left: 19px;
   position: absolute;
   top: 10px;
-  width: 1px
+  width: 1px;
 }
 
 .restore-button {

@@ -3,6 +3,7 @@ const CopyWebpackPlugin = require('copy-webpack-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const nodeExternals = require('webpack-node-externals');
 const StylelintPlugin = require('stylelint-webpack-plugin');
+const { removeDataTestIdTransformer } = require('typescript-transformer-jsx-remove-data-test-id');
 
 const rootPath = path.resolve(__dirname, './../');
 const srcPath = path.resolve(rootPath, 'src');
@@ -61,6 +62,11 @@ const renderer = {
           modulePath,
         ],
         loader: 'ts-loader',
+        options: {
+          getCustomTransformers: () => ({
+            before: [removeDataTestIdTransformer()]
+          }),
+        },
       },
     ],
   },

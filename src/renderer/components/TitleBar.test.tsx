@@ -21,7 +21,7 @@ describe('<TitleBar />', () => {
     render(<TitleBar isMaximized={true} />);
 
     expect(screen.getByTestId('close-button').className).toBe('close-button');
-    expect(screen.getByTestId('maximize-button').className).toBe('restore-button');
+    expect(screen.getByTestId('maximize-button').className).toBe('resize-button');
     expect(screen.getByTestId('minimize-button').className).toBe('minimize-button');
     expect(screen.getByTestId('window-title').className).toBe('window-title');
   });
@@ -39,7 +39,7 @@ describe('<TitleBar />', () => {
     render(<TitleBar isFocused={false} isMaximized={true} />);
 
     expect(screen.getByTestId('close-button').className).toBe('close-button blur');
-    expect(screen.getByTestId('maximize-button').className).toBe('restore-button blur');
+    expect(screen.getByTestId('maximize-button').className).toBe('resize-button blur');
     expect(screen.getByTestId('minimize-button').className).toBe('minimize-button blur');
     expect(screen.getByTestId('window-title').className).toBe('window-title blur');
   });
@@ -60,7 +60,7 @@ describe('<TitleBar />', () => {
 
   test('should click maximize button', () => {
     const handler = jest.fn();
-    render(<TitleBar onMaximizeRestoreButtonClick={handler} />);
+    render(<TitleBar onMaximizeResizeButtonClick={handler} />);
 
     fireEvent.click(screen.getByTestId('maximize-button'));
     expect(handler).toHaveBeenCalled();

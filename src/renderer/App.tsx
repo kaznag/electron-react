@@ -22,7 +22,7 @@ class App extends React.Component<Props, State> {
     };
 
     this.onCloseButtonClick = this.onCloseButtonClick.bind(this);
-    this.onMaximizeRestoreButtonClick = this.onMaximizeRestoreButtonClick.bind(this);
+    this.onMaximizeResizeButtonClick = this.onMaximizeResizeButtonClick.bind(this);
     this.onMinimizeButtonClick = this.onMinimizeButtonClick.bind(this);
 
     window.api.onWindowFocus(isFocused => this.onWindowFocus(isFocused));
@@ -45,7 +45,7 @@ class App extends React.Component<Props, State> {
         <TitleBar isFocused={this.state.isFocused}
           isMaximized={this.state.isMaximized}
           onCloseButtonClick={this.onCloseButtonClick}
-          onMaximizeRestoreButtonClick={this.onMaximizeRestoreButtonClick}
+          onMaximizeResizeButtonClick={this.onMaximizeResizeButtonClick}
           onMinimizeButtonClick={this.onMinimizeButtonClick}>{this.state.windowTitle}</TitleBar>
         <div className="contents">
           Hello world
@@ -58,7 +58,7 @@ class App extends React.Component<Props, State> {
     window.api.sendWindowCloseRequest();
   }
 
-  private onMaximizeRestoreButtonClick(): void {
+  private onMaximizeResizeButtonClick(): void {
     window.api.sendWindowMaximizeRestoreRequest();
   }
 

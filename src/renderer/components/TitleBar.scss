@@ -111,7 +111,7 @@ $button-width: 45px;
   @include maximize-button-base(#000000);
 }
 
-@mixin restore-button-base-before($color) {
+@mixin resize-button-base-before($color) {
   border: 1px solid $color;
   content: " ";
   height: 6px;
@@ -121,7 +121,7 @@ $button-width: 45px;
   width: 6px;
 }
 
-@mixin restore-button-base-after($color) {
+@mixin resize-button-base-after($color) {
   background: $color;
   box-shadow: 0px 1px $color, 1px 0px $color, 2px 0px $color, 3px 0px $color, 4px 0px $color,
     5px 0px $color, 6px 0px $color, 7px 0px $color, 7px 1px $color, 7px 2px $color, 7px 3px $color,
@@ -134,36 +134,36 @@ $button-width: 45px;
   width: 1px;
 }
 
-.restore-button {
+.resize-button {
   @extend .button;
 }
 
-.restore-button:before {
-  @include restore-button-base-before(#000000);
+.resize-button:before {
+  @include resize-button-base-before(#000000);
 }
 
-.restore-button:after {
-  @include restore-button-base-after(#000000);
+.resize-button:after {
+  @include resize-button-base-after(#000000);
 }
 
-.restore-button:hover {
+.resize-button:hover {
   background-color: #e5e5e5;
 }
 
-.restore-button.blur:before {
-  @include restore-button-base-before(#999999);
+.resize-button.blur:before {
+  @include resize-button-base-before(#999999);
 }
 
-.restore-button.blur:after {
-  @include restore-button-base-after(#999999);
+.resize-button.blur:after {
+  @include resize-button-base-after(#999999);
 }
 
-.restore-button.blur:hover:before {
-  @include restore-button-base-before(#000000);
+.resize-button.blur:hover:before {
+  @include resize-button-base-before(#000000);
 }
 
-.restore-button.blur:hover:after {
-  @include restore-button-base-after(#000000);
+.resize-button.blur:hover:after {
+  @include resize-button-base-after(#000000);
 }
 
 @mixin minimize-button-base($color) {

@@ -44,9 +44,10 @@ class App extends React.Component<Props, State> {
       <div className='app'>
         <TitleBar isFocused={this.state.isFocused}
           isMaximized={this.state.isMaximized}
+          windowTitle={this.state.windowTitle}
           onCloseButtonClick={this.onCloseButtonClick}
           onMaximizeResizeButtonClick={this.onMaximizeResizeButtonClick}
-          onMinimizeButtonClick={this.onMinimizeButtonClick}>{this.state.windowTitle}</TitleBar>
+          onMinimizeButtonClick={this.onMinimizeButtonClick}></TitleBar>
         <div className="contents">
           Hello world
         </div>

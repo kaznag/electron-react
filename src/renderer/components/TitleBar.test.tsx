@@ -17,7 +17,7 @@ describe('<TitleBar />', () => {
     expect(screen.getByTestId('window-title').className).toBe('window-title');
   });
 
-  test('should render with restore button', () => {
+  test('should render with resize button', () => {
     render(<TitleBar isMaximized={true} />);
 
     expect(screen.getByTestId('close-button').className).toBe('close-button');
@@ -35,7 +35,7 @@ describe('<TitleBar />', () => {
     expect(screen.getByTestId('window-title').className).toBe('window-title blur');
   });
 
-  test('should render with blur restore button', () => {
+  test('should render with blur resize button', () => {
     render(<TitleBar isFocused={false} isMaximized={true} />);
 
     expect(screen.getByTestId('close-button').className).toBe('close-button blur');

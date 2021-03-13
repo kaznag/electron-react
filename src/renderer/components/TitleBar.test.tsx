@@ -46,7 +46,6 @@ describe('<TitleBar />', () => {
 
   test('should render title', () => {
     render(<TitleBar windowTitle={'Hello world'} />);
-    screen.debug();
     expect(screen.getByTestId('window-title')).toHaveTextContent('Hello world');
   });
 

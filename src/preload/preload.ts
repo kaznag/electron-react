@@ -35,7 +35,6 @@ contextBridge.exposeInMainWorld(
     },
     on: (channel: string, listener: (...args: any[]) => void) => {
       ipcRenderer.on(channel, (_event: IpcRendererEvent, ...args: any[]) => {
-        console.log(args.length);
         if (args.length === 1) {
           listener(args[0]);
         } else {

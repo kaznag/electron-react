@@ -23,14 +23,18 @@
   ],
   "dependencies": {
     "electron-store": "^6.0.0",
+    "i18next": "^20.1.0",
     "react": "^16.13.1",
-    "react-dom": "^16.13.1"
+    "react-dom": "^16.13.1",
+    "react-i18next": "^11.8.12"
   },
   "devDependencies": {
     "@testing-library/jest-dom": "^5.11.9",
     "@testing-library/react": "^11.2.5",
+    "@types/i18next": "^13.0.0",
     "@types/react": "^16.9.52",
     "@types/react-dom": "^16.9.8",
+    "@types/react-i18next": "^8.1.0",
     "copy-webpack-plugin": "^6.1.0",
     "css-loader": "^4.2.2",
     "electron": "^10.1.3",

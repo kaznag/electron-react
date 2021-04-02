@@ -15,6 +15,7 @@ type Settings = {
       isMaximized: boolean,
     },
   },
+  language: string,
 }
 
 type Default = Settings & {
@@ -51,6 +52,7 @@ class ApplicationSettings {
         },
       },
     },
+    language: '',
   };
 
   private store: ElectronStore;
@@ -75,6 +77,7 @@ class ApplicationSettings {
           isMaximized: <boolean>this.store.get('window.status.isMaximized', this.default.window.status.isMaximized),
         },
       },
+      language: <string>this.store.get('language', this.default.language),
     };
   }
 
@@ -116,6 +119,14 @@ class ApplicationSettings {
 
   getWindowMinimumSize(): { width: number, height: number } {
     return this.default.window.styles.minimumSize;
+  }
+
+  getLanguage(): string {
+    return this.settings.language;
+  }
+
+  setLanguage(language: string): void {
+    this.settings.language = language;
   }
 }
 

@@ -27,6 +27,9 @@ contextBridge.exposeInMainWorld(
     sendWindowMinimizeRequest: () => {
       ipcRenderer.send(ChannelKey.windowMinimizeRequest);
     },
+    sendChangeLanguage: (language: string) => {
+      ipcRenderer.send(ChannelKey.changeLanguage, language);
+    },
     invokeWindowParameterRequest: async (): Promise<WindowParameter> => {
       return await ipcRenderer.invoke(ChannelKey.windowParameterRequest);
     },

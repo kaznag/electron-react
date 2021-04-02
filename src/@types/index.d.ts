@@ -13,6 +13,7 @@ export interface Api {
   sendWindowCloseRequest: () => void;
   sendWindowMaximizeRestoreRequest: () => void;
   sendWindowMinimizeRequest: () => void;
+  sendChangeLanguage: (language: string) => void;
   invokeWindowParameterRequest: () => Promise<WindowParameter>;
   invoke: (channel: string, ...args: any[]) => Promise<any>;
   on: (channel: string, listener: (...args: any[]) => void) => void;

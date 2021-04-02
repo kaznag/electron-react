@@ -1,12 +1,18 @@
 import React from 'react';
 import './App.scss';
 import TitleBar from './components/TitleBar';
+import Main from './components/Main';
+import i18n from 'i18next';
+import { Language } from '../common/message';
+import './i18n';
 
 type Props = {};
 
 type State = {
   isFocused: boolean;
   isMaximized: boolean;
+  language: string,
+  supportLanguages: Language[],
   windowTitle: string;
 };
 
@@ -18,12 +24,15 @@ class App extends React.Component<Props, State> {
     this.state = {
       isFocused: false,
       isMaximized: false,
+      language: '',
+      supportLanguages: [],
       windowTitle: '',
     };
 
     this.onCloseButtonClick = this.onCloseButtonClick.bind(this);
     this.onMaximizeResizeButtonClick = this.onMaximizeResizeButtonClick.bind(this);
     this.onMinimizeButtonClick = this.onMinimizeButtonClick.bind(this);
+    this.onLanguageChange = this.onLanguageChange.bind(this);
 
     window.api.onWindowFocus(isFocused => this.onWindowFocus(isFocused));
     window.api.onWindowMaximize(isMaximize => this.onWindowMaximize(isMaximize));
@@ -33,8 +42,10 @@ class App extends React.Component<Props, State> {
         this.setState({
           isFocused: windowParameter.isFocused,
           isMaximized: windowParameter.isMaximized,
+          supportLanguages: windowParameter.supportLanguages,
           windowTitle: windowParameter.title,
         });
+        this.changeLanguage(windowParameter.language);
         window.api.sendWindowInitialized();
       });
   }
@@ -49,7 +60,8 @@ class App extends React.Component<Props, State> {
           onMaximizeResizeButtonClick={this.onMaximizeResizeButtonClick}
           onMinimizeButtonClick={this.onMinimizeButtonClick}></TitleBar>
         <div className="contents">
-          Hello world
+          <Main language={this.state.language} supportLanguages={this.state.supportLanguages}
+            onLanguageChange={this.onLanguageChange} />
         </div>
       </div>
     );
@@ -73,6 +85,16 @@ class App extends React.Component<Props, State> {
 
   private onWindowMaximize(isMaximized: boolean): void {
     this.setState({ isMaximized: isMaximized });
+  }
+
+  private onLanguageChange(e: React.ChangeEvent<HTMLSelectElement>): void {
+    this.changeLanguage(e.target.value);
+  }
+
+  private changeLanguage(language: string): void {
+    i18n.changeLanguage(language);
+    this.setState({ language: language });
+    window.api.sendChangeLanguage(language);
   }
 };
 

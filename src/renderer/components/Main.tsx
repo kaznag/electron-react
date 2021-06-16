@@ -17,7 +17,7 @@ const Main: React.FC<MainProps> = props => {
       <h2>{t('language')}</h2>
       <select value={props.language} onChange={props.onLanguageChange}>
         {
-          props.supportLanguages.map(o => <option value={o.language}>{o.label}</option>)
+          props.supportLanguages.map(o => <option key={o.language} value={o.language}>{o.label}</option>)
         }
       </select>
     </div>

@@ -1,4 +1,3 @@
-
 class ChannelKey {
   // main to renderer
   static readonly windowFocus = 'windowFocus';
@@ -14,6 +13,4 @@ class ChannelKey {
   static readonly windowParameterRequest = 'windowParameterRequest';
 }
 
-export {
-  ChannelKey,
-}
+export { ChannelKey };

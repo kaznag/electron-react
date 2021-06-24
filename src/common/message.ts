@@ -1,4 +1,3 @@
-
 interface Language {
   label: string;
   language: string;
@@ -12,7 +11,4 @@ interface WindowParameter {
   title: string;
 }
 
-export {
-  Language,
-  WindowParameter
-}
+export { Language, WindowParameter };

@@ -11,13 +11,12 @@ type Props = {};
 type State = {
   isFocused: boolean;
   isMaximized: boolean;
-  language: string,
-  supportLanguages: Language[],
+  language: string;
+  supportLanguages: Language[];
   windowTitle: string;
 };
 
 class App extends React.Component<Props, State> {
-
   constructor(props: Props) {
     super(props);
 
@@ -34,34 +33,38 @@ class App extends React.Component<Props, State> {
     this.onMinimizeButtonClick = this.onMinimizeButtonClick.bind(this);
     this.onLanguageChange = this.onLanguageChange.bind(this);
 
-    window.api.onWindowFocus(isFocused => this.onWindowFocus(isFocused));
-    window.api.onWindowMaximize(isMaximize => this.onWindowMaximize(isMaximize));
+    window.api.onWindowFocus((isFocused) => this.onWindowFocus(isFocused));
+    window.api.onWindowMaximize((isMaximize) => this.onWindowMaximize(isMaximize));
 
-    window.api.invokeWindowParameterRequest()
-      .then(windowParameter => {
-        this.setState({
-          isFocused: windowParameter.isFocused,
-          isMaximized: windowParameter.isMaximized,
-          supportLanguages: windowParameter.supportLanguages,
-          windowTitle: windowParameter.title,
-        });
-        this.changeLanguage(windowParameter.language);
-        window.api.sendWindowInitialized();
+    window.api.invokeWindowParameterRequest().then((windowParameter) => {
+      this.setState({
+        isFocused: windowParameter.isFocused,
+        isMaximized: windowParameter.isMaximized,
+        supportLanguages: windowParameter.supportLanguages,
+        windowTitle: windowParameter.title,
       });
+      this.changeLanguage(windowParameter.language);
+      window.api.sendWindowInitialized();
+    });
   }
 
   render() {
     return (
-      <div className='app'>
-        <TitleBar isFocused={this.state.isFocused}
+      <div className="app">
+        <TitleBar
+          isFocused={this.state.isFocused}
           isMaximized={this.state.isMaximized}
           windowTitle={this.state.windowTitle}
           onCloseButtonClick={this.onCloseButtonClick}
           onMaximizeResizeButtonClick={this.onMaximizeResizeButtonClick}
-          onMinimizeButtonClick={this.onMinimizeButtonClick}></TitleBar>
+          onMinimizeButtonClick={this.onMinimizeButtonClick}
+        ></TitleBar>
         <div className="contents">
-          <Main language={this.state.language} supportLanguages={this.state.supportLanguages}
-            onLanguageChange={this.onLanguageChange} />
+          <Main
+            language={this.state.language}
+            supportLanguages={this.state.supportLanguages}
+            onLanguageChange={this.onLanguageChange}
+          />
         </div>
       </div>
     );
@@ -96,6 +99,6 @@ class App extends React.Component<Props, State> {
     this.setState({ language: language });
     window.api.sendChangeLanguage(language);
   }
-};
+}
 
 export default App;

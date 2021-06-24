@@ -1,4 +1,4 @@
-import { app, ipcMain } from 'electron'
+import { app, ipcMain } from 'electron';
 import * as fs from 'fs';
 import * as path from 'path';
 import { MainWindow } from './main-window';
@@ -7,19 +7,18 @@ import { ChannelKey } from '../common/channel-key';
 import { WindowParameter } from '../common/message';
 
 class Application {
-
   private mainWindow: MainWindow | null = null;
 
   private appSettings: ApplicationSettings | null = null;
   private language: string = '';
   private supportLanguages = [
     {
-      "language": "en",
-      "label": "English"
+      language: 'en',
+      label: 'English',
     },
     {
-      "language": "ja",
-      "label": "日本語"
+      language: 'ja',
+      label: '日本語',
     },
   ];
 
@@ -35,9 +34,13 @@ class Application {
     this.app.on('second-instance', () => this.onSecondInstance());
 
     ipcMain.on(ChannelKey.windowCloseRequest, () => this.onIpcWindowCloseRequest());
-    ipcMain.on(ChannelKey.windowMaximizeRestoreRequest, () => this.onIpcWindowMaximizeRestoreRequest());
+    ipcMain.on(ChannelKey.windowMaximizeRestoreRequest, () =>
+      this.onIpcWindowMaximizeRestoreRequest()
+    );
     ipcMain.on(ChannelKey.windowMinimizeRequest, () => this.onIpcWindowMinimizeRequest());
-    ipcMain.on(ChannelKey.changeLanguage, (_event: Event, language: string) => this.onIpcChangeLanguage(language));
+    ipcMain.on(ChannelKey.changeLanguage, (_event: Event, language: string) =>
+      this.onIpcChangeLanguage(language)
+    );
     ipcMain.once(ChannelKey.windowInitialized, () => this.onIpcWindowInitialized());
     ipcMain.handle(ChannelKey.windowParameterRequest, () => this.onWindowParameterRequest());
   }
@@ -144,15 +147,15 @@ class Application {
 
     try {
       const files = await fs.promises.readdir(dir);
-      const lang = files.filter(o => o.includes('.json') && !o.includes('locales.json'))
-        .map(o => path.basename(o, path.extname(o)));
-      this.supportLanguages = this.supportLanguages.filter(o => lang.includes(o.language));
+      const lang = files
+        .filter((o) => o.includes('.json') && !o.includes('locales.json'))
+        .map((o) => path.basename(o, path.extname(o)));
+      this.supportLanguages = this.supportLanguages.filter((o) => lang.includes(o.language));
 
-      if (!this.supportLanguages.find(o => o.language === this.language)) {
+      if (!this.supportLanguages.find((o) => o.language === this.language)) {
         this.language = this.supportLanguages[0].language;
       }
-    } catch (err) {
-    }
+    } catch (err) {}
   }
 }
 

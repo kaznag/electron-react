@@ -18,10 +18,10 @@
     "pretest": "npm run lint",
     "test": "jest --config ./config/jest.config.js",
     "lint": "run-p lint:*",
-    "lint:prettier": "prettier --check ./src/**/*.html",
+    "lint:prettier": "prettier --check ./src/**/*.{html,ts,tsx}",
     "lint:stylelint": "stylelint --config ./config/.stylelintrc.json ./src/**/*.{css,sass,scss}",
-    "fix": "run-p fix:*",
-    "fix:prettier": "prettier --write ./src/**/*.html",
+    "fix": "run-s fix:*",
+    "fix:prettier": "prettier --write ./src/**/*.{html,ts,tsx}",
     "fix:stylelint": "stylelint --config ./config/.stylelintrc.json --fix ./src/**/*.{css,sass,scss}"
   },
   "keywords": [
@@ -83,7 +83,7 @@
     "./src/**/*.{css,sass,scss}": [
       "stylelint --config ./config/.stylelintrc.json --fix"
     ],
-    "./src/**/*.html": [
+    "./src/**/*.{html,ts,tsx}": [
       "prettier --write"
     ]
   }

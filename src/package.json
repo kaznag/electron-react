@@ -3,10 +3,10 @@
   "version": "0.1.0",
   "main": "main.js",
   "dependencies": {
-    "electron-store": "^6.0.0",
-    "i18next": "^20.1.0",
-    "react": "^16.13.1",
-    "react-dom": "^16.13.1",
-    "react-i18next": "^11.8.12"
+    "electron-store": "^8.0.0",
+    "i18next": "^20.3.2",
+    "react": "^17.0.2",
+    "react-dom": "^17.0.2",
+    "react-i18next": "^11.11.1"
   }
 }

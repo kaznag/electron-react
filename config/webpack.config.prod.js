@@ -1,6 +1,6 @@
 const { merge } = require('webpack-merge');
 const path = require('path');
-const JavaScriptObfuscator = require('webpack-obfuscator');
+const WebpackObfuscator = require('webpack-obfuscator');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const common = require('./webpack.config.common');
 
@@ -12,9 +12,9 @@ const main = merge(common.main, {
     path: outputPath,
   },
   plugins: [
-    new JavaScriptObfuscator({
+    new WebpackObfuscator({
       rotateUnicodeArray: true
-    }),
+    }, []),
   ]
 });
 
@@ -36,9 +36,9 @@ const renderer = merge(common.renderer, {
     ],
   },
   plugins: [
-    new JavaScriptObfuscator({
+    new WebpackObfuscator({
       rotateUnicodeArray: true
-    }),
+    }, []),
     new MiniCssExtractPlugin({
       filename: '[name].css',
       chunkFilename: '[id].css',
@@ -52,9 +52,9 @@ const preload = merge(common.preload, {
     path: outputPath,
   },
   plugins: [
-    new JavaScriptObfuscator({
+    new WebpackObfuscator({
       rotateUnicodeArray: true
-    }),
+    }, []),
   ]
 });
 

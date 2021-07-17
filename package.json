@@ -46,7 +46,7 @@
     "electron": "^13.1.6",
     "electron-builder": "^22.11.7",
     "html-webpack-plugin": "^5.3.2",
-    "husky": "^4.3.0",
+    "husky": "^7.0.1",
     "identity-obj-proxy": "^3.0.0",
     "javascript-obfuscator": "^2.15.5",
     "jest": "^27.0.6",
@@ -74,11 +74,6 @@
     "webpack-merge": "^5.8.0",
     "webpack-node-externals": "^3.0.0",
     "webpack-obfuscator": "^3.3.2"
-  },
-  "husky": {
-    "hooks": {
-      "pre-commit": "node ./scripts/package.js && git add ./src/package.json && lint-staged"
-    }
   },
   "lint-staged": {
     "./src/**/*.{css,sass,scss}": [

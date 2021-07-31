@@ -25,7 +25,14 @@
     "fix:stylelint": "stylelint --config ./config/.stylelintrc.json --fix ./src/**/*.{css,sass,scss}"
   },
   "keywords": [
-    "electron"
+    "electron",
+    "react",
+    "webpack",
+    "electron-builder",
+    "typescript",
+    "localization",
+    "i18next",
+    "jest"
   ],
   "dependencies": {
     "electron-store": "^8.0.0",

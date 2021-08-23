@@ -7,11 +7,13 @@ i18n.use(initReactI18next).init({
     en: {
       translation: {
         language: 'Language',
+        counter: 'Counter',
       },
     },
     ja: {
       translation: {
         language: '言語',
+        counter: 'カウンタ',
       },
     },
   },

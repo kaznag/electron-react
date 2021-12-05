@@ -7,6 +7,8 @@ import { ChannelKey } from '../common/channel-key';
 import { WindowParameter } from '../common/message';
 
 class Application {
+  private readonly isDev = process.env.NODE_ENV !== 'production';
+
   private mainWindow: MainWindow | null = null;
 
   private appSettings: ApplicationSettings | null = null;
@@ -61,6 +63,19 @@ class Application {
       this.mainWindow.on('maximize', () => this.onWindowMaximize());
       this.mainWindow.on('unmaximize', () => this.onWindowUnmaximize());
     });
+
+    if (this.isDev) {
+      import('electron-devtools-installer').then((installer) => {
+        installer
+          .default([installer['REACT_DEVELOPER_TOOLS'], installer['REDUX_DEVTOOLS']], {
+            loadExtensionOptions: {
+              allowFileAccess: true,
+            },
+            forceDownload: !!process.env.UPGRADE_EXTENSIONS,
+          })
+          .catch((error) => console.error('An error occurred: ', error));
+      });
+    }
   }
 
   private onWindowAllClosed(): void {

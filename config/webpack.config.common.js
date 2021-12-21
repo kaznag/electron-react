@@ -2,7 +2,6 @@ const path = require('path');
 const CopyWebpackPlugin = require('copy-webpack-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const nodeExternals = require('webpack-node-externals');
-const StylelintPlugin = require('stylelint-webpack-plugin');
 const { removeDataTestIdTransformer } = require('typescript-transformer-jsx-remove-data-test-id');
 
 const rootPath = path.resolve(__dirname, './../');
@@ -77,11 +76,6 @@ const renderer = {
     new HtmlWebpackPlugin({
       template: path.resolve(rootPath, './src/renderer/index.html'),
       filename: 'index.html',
-    }),
-    new StylelintPlugin({
-      configFile: path.resolve(rootPath, 'config', '.stylelintrc.json'),
-      files: 'src/**/*.s?(a|c)ss',
-      fix: true,
     }),
   ],
   target: 'web',

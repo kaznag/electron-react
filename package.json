@@ -19,10 +19,10 @@
     "test": "jest --config ./config/jest.config.js",
     "lint": "run-p lint:*",
     "lint:prettier": "prettier --check ./src/**/*",
-    "lint:stylelint": "stylelint --config ./config/.stylelintrc.json ./src/**/*.{css,sass,scss}",
+    "lint:stylelint": "stylelint --config ./config/.stylelintrc.yml src/**/*.{css,sass,scss}",
     "fix": "run-s fix:*",
     "fix:prettier": "prettier --write ./src/**/*",
-    "fix:stylelint": "stylelint --config ./config/.stylelintrc.json --fix ./src/**/*.{css,sass,scss}"
+    "fix:stylelint": "stylelint --config ./config/.stylelintrc.yml --fix src/**/*.{css,sass,scss}"
   },
   "keywords": [
     "electron",
@@ -87,7 +87,7 @@
   },
   "lint-staged": {
     "./src/**/*.{css,sass,scss}": [
-      "stylelint --config ./config/.stylelintrc.json --fix"
+      "stylelint --config ./config/.stylelintrc.yml --fix"
     ],
     "./src/**/*.{html,ts,tsx}": [
       "prettier --write"

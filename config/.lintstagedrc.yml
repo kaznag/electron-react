@@ -1,0 +1,6 @@
+'config/**/*.{js,json,yml}':
+  - prettier --write --config ./config/.prettierrc.yml
+'src/**/*':
+  - prettier --write --config ./config/.prettierrc.yml
+'src/**/*.{css,sass,scss}':
+  - stylelint --config ./config/.stylelintrc.yml --fix

@@ -1,4 +1,4 @@
 #!/bin/sh
 . "$(dirname "$0")/_/husky.sh"
 
-node ./scripts/package.js && git add ./src/package.json && npx lint-staged
+node ./scripts/package.js && git add ./src/package.json && "$(npm bin)"/lint-staged --config ./config/.lintstagedrc.yml

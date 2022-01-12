@@ -84,16 +84,5 @@
     "webpack-merge": "^5.8.0",
     "webpack-node-externals": "^3.0.0",
     "webpack-obfuscator": "^3.3.2"
-  },
-  "lint-staged": {
-    "./src/**/*.{css,sass,scss}": [
-      "stylelint --config ./config/.stylelintrc.yml --fix"
-    ],
-    "./config/**/*.{js,json,yml}": [
-      "prettier --write --config ./config/.prettierrc.yml"
-    ],
-    "./src/**/*": [
-      "prettier --write --config ./config/.prettierrc.yml"
-    ]
   }
 }

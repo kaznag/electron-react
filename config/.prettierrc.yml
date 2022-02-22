@@ -3,6 +3,7 @@ overrides:
   - files:
       - '*.js'
       - '*.ts'
+      - '*.tsx'
       - '*.yml'
     options:
       singleQuote: true

@@ -14,31 +14,25 @@ const main = {
     filename: 'main.js',
   },
   module: {
-    rules: [{
-      test: /\.ts$/,
-      include: [
-        srcPath,
-      ],
-      exclude: [
-        modulePath,
-      ],
-      loader: 'ts-loader',
-    }]
+    rules: [
+      {
+        test: /\.ts$/,
+        include: [srcPath],
+        exclude: [modulePath],
+        loader: 'ts-loader',
+      },
+    ],
   },
   resolve: {
-    extensions: ['.js', '.ts']
+    extensions: ['.js', '.ts'],
   },
   plugins: [
     new CopyWebpackPlugin({
-      patterns: [
-        { from: path.resolve(srcPath, 'package.json') }
-      ]
+      patterns: [{ from: path.resolve(srcPath, 'package.json') }],
     }),
   ],
   target: 'electron-main',
-  externals: [
-    nodeExternals(),
-  ],
+  externals: [nodeExternals()],
   node: {
     __filename: true,
     __dirname: true,
@@ -54,23 +48,19 @@ const renderer = {
     rules: [
       {
         test: /\.tsx?$/,
-        include: [
-          srcPath,
-        ],
-        exclude: [
-          modulePath,
-        ],
+        include: [srcPath],
+        exclude: [modulePath],
         loader: 'ts-loader',
         options: {
           getCustomTransformers: () => ({
-            before: [removeDataTestIdTransformer()]
+            before: [removeDataTestIdTransformer()],
           }),
         },
       },
     ],
   },
   resolve: {
-    extensions: ['.js', '.ts', '.jsx', '.tsx']
+    extensions: ['.js', '.ts', '.jsx', '.tsx'],
   },
   plugins: [
     new HtmlWebpackPlugin({
@@ -91,19 +81,17 @@ const preload = {
     filename: 'preload.js',
   },
   module: {
-    rules: [{
-      test: /\.ts$/,
-      include: [
-        srcPath,
-      ],
-      exclude: [
-        path.resolve(rootPath, 'node_modules'),
-      ],
-      loader: 'ts-loader',
-    }]
+    rules: [
+      {
+        test: /\.ts$/,
+        include: [srcPath],
+        exclude: [path.resolve(rootPath, 'node_modules')],
+        loader: 'ts-loader',
+      },
+    ],
   },
   resolve: {
-    extensions: ['.js', '.ts']
+    extensions: ['.js', '.ts'],
   },
   target: 'electron-preload',
   node: {

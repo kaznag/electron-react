@@ -50,8 +50,4 @@ const preload = merge(common.preload, {
   devtool: 'inline-source-map',
 });
 
-module.exports = [
-  main,
-  renderer,
-  preload,
-];
+module.exports = [main, renderer, preload];

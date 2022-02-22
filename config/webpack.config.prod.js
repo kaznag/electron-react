@@ -12,10 +12,13 @@ const main = merge(common.main, {
     path: outputPath,
   },
   plugins: [
-    new WebpackObfuscator({
-      rotateUnicodeArray: true
-    }, []),
-  ]
+    new WebpackObfuscator(
+      {
+        rotateUnicodeArray: true,
+      },
+      []
+    ),
+  ],
 });
 
 const renderer = merge(common.renderer, {
@@ -27,23 +30,22 @@ const renderer = merge(common.renderer, {
     rules: [
       {
         test: /\.scss$/,
-        use: [
-          MiniCssExtractPlugin.loader,
-          'css-loader',
-          'sass-loader',
-        ],
+        use: [MiniCssExtractPlugin.loader, 'css-loader', 'sass-loader'],
       },
     ],
   },
   plugins: [
-    new WebpackObfuscator({
-      rotateUnicodeArray: true
-    }, []),
+    new WebpackObfuscator(
+      {
+        rotateUnicodeArray: true,
+      },
+      []
+    ),
     new MiniCssExtractPlugin({
       filename: '[name].css',
       chunkFilename: '[id].css',
     }),
-  ]
+  ],
 });
 
 const preload = merge(common.preload, {
@@ -52,14 +54,13 @@ const preload = merge(common.preload, {
     path: outputPath,
   },
   plugins: [
-    new WebpackObfuscator({
-      rotateUnicodeArray: true
-    }, []),
-  ]
+    new WebpackObfuscator(
+      {
+        rotateUnicodeArray: true,
+      },
+      []
+    ),
+  ],
 });
 
-module.exports = [
-  main,
-  renderer,
-  preload,
-];
+module.exports = [main, renderer, preload];

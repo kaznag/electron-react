@@ -13,7 +13,7 @@ const defaultValue: CounterProps = {
   count: 0,
 };
 
-const Counter: React.FC<CounterProps> = (props) => {
+function Counter(props: CounterProps): JSX.Element {
   const count = props.count ?? defaultValue.count;
   return (
     <div>
@@ -72,6 +72,6 @@ const Counter: React.FC<CounterProps> = (props) => {
       </button>
     </div>
   );
-};
+}
 
 export default Counter;

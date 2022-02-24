@@ -16,7 +16,7 @@ const defaultValue: TitleBarProps = {
   isMaximized: false,
 };
 
-const TitleBar: React.FC<TitleBarProps> = (props) => {
+function TitleBar(props: TitleBarProps) {
   const isFocused = props.isFocused ?? defaultValue.isFocused;
   const isMaximized = props.isMaximized ?? defaultValue.isMaximized;
 
@@ -45,6 +45,6 @@ const TitleBar: React.FC<TitleBarProps> = (props) => {
       </div>
     </div>
   );
-};
+}
 
 export default TitleBar;

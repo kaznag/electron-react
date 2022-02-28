@@ -1,6 +1,6 @@
 import React from 'react';
 import './App.scss';
-import TitleBar from './components/TitleBar';
+import { TitleBar } from './shared/titleBar';
 import Main from './components/Main';
 import i18n from 'i18next';
 import { Language } from '../common/message';

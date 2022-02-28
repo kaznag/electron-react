@@ -2,8 +2,7 @@ import '@testing-library/jest-dom';
 
 import { configure, fireEvent, render, screen } from '@testing-library/react';
 import React from 'react';
-
-import TitleBar from './TitleBar';
+import { TitleBar } from '.';
 
 configure({ testIdAttribute: 'data-test-id' });
 

@@ -47,4 +47,4 @@ function TitleBar(props: TitleBarProps) {
   );
 }
 
-export default TitleBar;
+export { TitleBar };

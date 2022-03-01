@@ -2,23 +2,18 @@ import React from 'react';
 
 import './TitleBar.scss';
 
-type TitleBarProps = {
+interface Props {
   isFocused?: boolean;
   isMaximized?: boolean;
   windowTitle?: string;
   onCloseButtonClick?: (event: React.MouseEvent<HTMLElement>) => void;
   onMaximizeResizeButtonClick?: (event: React.MouseEvent<HTMLElement>) => void;
   onMinimizeButtonClick?: (event: React.MouseEvent<HTMLElement>) => void;
-};
+}
 
-const defaultValue: TitleBarProps = {
-  isFocused: true,
-  isMaximized: false,
-};
-
-function TitleBar(props: TitleBarProps) {
-  const isFocused = props.isFocused ?? defaultValue.isFocused;
-  const isMaximized = props.isMaximized ?? defaultValue.isMaximized;
+function TitleBar(props: Props): JSX.Element {
+  const isFocused = props.isFocused ?? true;
+  const isMaximized = props.isMaximized ?? false;
 
   return (
     <div className="title-bar">

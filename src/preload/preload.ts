@@ -1,17 +1,18 @@
 import { contextBridge, ipcRenderer, IpcRendererEvent } from 'electron';
 import { ChannelKey } from '../common/channel-key';
-import { WindowParameter } from '../common/message';
+import { TitleBarState, WindowParameter } from '../common/message';
 
 contextBridge.exposeInMainWorld('api', {
-  onWindowFocus: (listener: (isFocused: boolean) => void) => {
-    ipcRenderer.on(ChannelKey.windowFocus, (_event: IpcRendererEvent, isFocused: boolean) => {
-      listener(isFocused);
+  addTitleBarStateListener: (listnener: (state: TitleBarState) => void) => {
+    ipcRenderer.on(ChannelKey.titleBarState, (_event: IpcRendererEvent, state: TitleBarState) => {
+      listnener(state);
     });
   },
-  onWindowMaximize: (listener: (isMaximized: boolean) => void) => {
-    ipcRenderer.on(ChannelKey.windowMaximize, (_event: IpcRendererEvent, isMaximized: boolean) => {
-      listener(isMaximized);
-    });
+  removeTitleBarStateListner: () => {
+    ipcRenderer.removeAllListeners(ChannelKey.titleBarState);
+  },
+  invokeTitleBarStateRequest: async (): Promise<TitleBarState> => {
+    return await ipcRenderer.invoke(ChannelKey.titleBarStateRequest);
   },
   sendWindowInitialized: () => {
     ipcRenderer.send(ChannelKey.windowInitialized);

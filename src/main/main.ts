@@ -4,7 +4,7 @@ import * as path from 'path';
 import { MainWindow } from './main-window';
 import { ApplicationSettings } from './application-settings';
 import { ChannelKey } from '../common/channel-key';
-import { WindowParameter } from '../common/message';
+import { TitleBarState, WindowParameter } from '../common/message';
 
 class Application {
   private readonly isDev = process.env.NODE_ENV !== 'production';
@@ -45,6 +45,7 @@ class Application {
     );
     ipcMain.once(ChannelKey.windowInitialized, () => this.onIpcWindowInitialized());
     ipcMain.handle(ChannelKey.windowParameterRequest, () => this.onWindowParameterRequest());
+    ipcMain.handle(ChannelKey.titleBarStateRequest, () => this.onTitleBarStateRequest());
   }
 
   private onReady(): void {
@@ -58,10 +59,10 @@ class Application {
     this.initializeLanguage().then(() => {
       this.mainWindow = new MainWindow(this.appSettings!);
 
-      this.mainWindow.on('blur', () => this.onWindowBlur());
-      this.mainWindow.on('focus', () => this.onWindowFocus());
-      this.mainWindow.on('maximize', () => this.onWindowMaximize());
-      this.mainWindow.on('unmaximize', () => this.onWindowUnmaximize());
+      this.mainWindow.on('blur', () => this.sendWindowFocus(false));
+      this.mainWindow.on('focus', () => this.sendWindowFocus(true));
+      this.mainWindow.on('maximize', () => this.sendWindowMaximize(true));
+      this.mainWindow.on('unmaximize', () => this.sendWindowMaximize(false));
     });
 
     if (this.isDev) {
@@ -90,22 +91,6 @@ class Application {
     }
   }
 
-  private onWindowBlur(): void {
-    this.sendWindowFocus(false);
-  }
-
-  private onWindowFocus(): void {
-    this.sendWindowFocus(true);
-  }
-
-  private onWindowMaximize(): void {
-    this.sendWindowMaximize(true);
-  }
-
-  private onWindowUnmaximize(): void {
-    this.sendWindowMaximize(false);
-  }
-
   private onIpcWindowCloseRequest(): void {
     this.mainWindow!.close();
   }
@@ -132,20 +117,25 @@ class Application {
 
   private onWindowParameterRequest(): WindowParameter {
     return {
-      isFocused: this.mainWindow!.isFocused(),
-      isMaximized: this.mainWindow!.isMaximized(),
       language: this.language,
       supportLanguages: this.supportLanguages,
+    };
+  }
+
+  private onTitleBarStateRequest(): TitleBarState {
+    return {
+      isFocused: this.mainWindow!.isFocused(),
+      isMaximized: this.mainWindow!.isMaximized(),
       title: this.app.name,
     };
   }
 
   private sendWindowFocus(isFocused: boolean): void {
-    this.mainWindow!.send(ChannelKey.windowFocus, isFocused);
+    this.mainWindow!.send(ChannelKey.titleBarState, { isFocused: isFocused });
   }
 
   private sendWindowMaximize(isMaximized: boolean): void {
-    this.mainWindow!.send(ChannelKey.windowMaximize, isMaximized);
+    this.mainWindow!.send(ChannelKey.titleBarState, { isMaximized: isMaximized });
   }
 
   private extractLanguage(locale: string): string {

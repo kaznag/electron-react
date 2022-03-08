@@ -4,11 +4,14 @@ interface Language {
 }
 
 interface WindowParameter {
-  isFocused: boolean;
-  isMaximized: boolean;
   language: string;
   supportLanguages: Language[];
-  title: string;
 }
 
-export { Language, WindowParameter };
+interface TitleBarState {
+  isFocused?: boolean;
+  isMaximized?: boolean;
+  title?: string;
+}
+
+export { Language, WindowParameter, TitleBarState };

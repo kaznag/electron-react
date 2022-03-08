@@ -1,4 +1,4 @@
-import { WindowParameter } from '../common/message';
+import { TitleBarState, WindowParameter } from '../common/message';
 
 declare global {
   interface Window {
@@ -7,8 +7,9 @@ declare global {
 }
 
 export interface Api {
-  onWindowFocus: (listener: (isFocused: boolean) => void) => void;
-  onWindowMaximize: (listener: (isMaximize: boolean) => void) => void;
+  addTitleBarStateListener: (listnener: (state: TitleBarState) => void) => void;
+  removeTitleBarStateListner: () => void;
+  invokeTitleBarStateRequest: () => Promise<TitleBarState>;
   sendWindowInitialized: () => void;
   sendWindowCloseRequest: () => void;
   sendWindowMaximizeRestoreRequest: () => void;

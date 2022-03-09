@@ -1,4 +1,5 @@
 import React from 'react';
+import { useTranslation } from 'react-i18next';
 
 import './Counter.scss';
 
@@ -14,9 +15,12 @@ const defaultValue: CounterProps = {
 };
 
 function Counter(props: CounterProps): JSX.Element {
+  const { t } = useTranslation();
   const count = props.count ?? defaultValue.count;
+
   return (
     <div>
+      <h2>{t('counter')}</h2>
       <button
         onClick={() => {
           if (props.onDecrementClick) {

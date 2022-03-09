@@ -14,8 +14,6 @@ const Main: React.FC<MainProps> = (props) => {
 
   return (
     <div>
-      Hello world
-      <h2>{t('counter')}</h2>
       <CounterContainer></CounterContainer>
       <h2>{t('language')}</h2>
       <select value={props.language} onChange={props.onLanguageChange}>

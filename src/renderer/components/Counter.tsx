@@ -20,7 +20,7 @@ function Counter(props: CounterProps): JSX.Element {
 
   return (
     <div>
-      <h2>{t('counter')}</h2>
+      <div className="title">{t('counter')}</div>
       <button
         onClick={() => {
           if (props.onDecrementClick) {

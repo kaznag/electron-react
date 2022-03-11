@@ -6,6 +6,15 @@ import Counter from './Counter';
 
 configure({ testIdAttribute: 'data-test-id' });
 
+jest.mock('react-i18next', () => ({
+  ...jest.requireActual('react-i18next'),
+  useTranslation: () => {
+    return {
+      t: (str: string) => str,
+    };
+  },
+}));
+
 describe('<Counter />', () => {
   test('should render default Counter', () => {
     render(<Counter />);

@@ -1,0 +1,143 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<TitleBar /> should render blur TitleBar 1`] = `
+<DocumentFragment>
+  <div
+    class="title-bar"
+  >
+    <div
+      class="drag-region"
+    />
+    <div
+      class="close-button blur"
+      data-test-id="close-button"
+    />
+    <div
+      class="maximize-button blur"
+      data-test-id="maximize-button"
+    />
+    <div
+      class="minimize-button blur"
+      data-test-id="minimize-button"
+    />
+    <div
+      class="window-title blur"
+      data-test-id="window-title"
+    />
+  </div>
+</DocumentFragment>
+`;
+
+exports[`<TitleBar /> should render default TitleBar 1`] = `
+<DocumentFragment>
+  <div
+    class="title-bar"
+  >
+    <div
+      class="drag-region"
+    />
+    <div
+      class="close-button"
+      data-test-id="close-button"
+    />
+    <div
+      class="maximize-button"
+      data-test-id="maximize-button"
+    />
+    <div
+      class="minimize-button"
+      data-test-id="minimize-button"
+    />
+    <div
+      class="window-title"
+      data-test-id="window-title"
+    />
+  </div>
+</DocumentFragment>
+`;
+
+exports[`<TitleBar /> should render title 1`] = `
+<DocumentFragment>
+  <div
+    class="title-bar"
+  >
+    <div
+      class="drag-region"
+    />
+    <div
+      class="close-button"
+      data-test-id="close-button"
+    />
+    <div
+      class="maximize-button"
+      data-test-id="maximize-button"
+    />
+    <div
+      class="minimize-button"
+      data-test-id="minimize-button"
+    />
+    <div
+      class="window-title"
+      data-test-id="window-title"
+    >
+      Hello world
+    </div>
+  </div>
+</DocumentFragment>
+`;
+
+exports[`<TitleBar /> should render with blur resize button 1`] = `
+<DocumentFragment>
+  <div
+    class="title-bar"
+  >
+    <div
+      class="drag-region"
+    />
+    <div
+      class="close-button blur"
+      data-test-id="close-button"
+    />
+    <div
+      class="resize-button blur"
+      data-test-id="maximize-button"
+    />
+    <div
+      class="minimize-button blur"
+      data-test-id="minimize-button"
+    />
+    <div
+      class="window-title blur"
+      data-test-id="window-title"
+    />
+  </div>
+</DocumentFragment>
+`;
+
+exports[`<TitleBar /> should render with resize button 1`] = `
+<DocumentFragment>
+  <div
+    class="title-bar"
+  >
+    <div
+      class="drag-region"
+    />
+    <div
+      class="close-button"
+      data-test-id="close-button"
+    />
+    <div
+      class="resize-button"
+      data-test-id="maximize-button"
+    />
+    <div
+      class="minimize-button"
+      data-test-id="minimize-button"
+    />
+    <div
+      class="window-title"
+      data-test-id="window-title"
+    />
+  </div>
+</DocumentFragment>
+`;

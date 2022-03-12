@@ -17,15 +17,9 @@ jest.mock('react-i18next', () => ({
 
 describe('<Counter />', () => {
   test('should render default Counter', () => {
-    render(<Counter />);
+    const { asFragment } = render(<Counter />);
 
-    expect(screen.getByTestId('count')).toHaveTextContent('0');
-    expect(screen.getByTestId('count')).toHaveClass('count');
-    expect(screen.getByTestId('increment-button-1')).toHaveTextContent('+1');
-    expect(screen.getByTestId('increment-button-10')).toHaveTextContent('+10');
-    expect(screen.getByTestId('decrement-button-1')).toHaveTextContent('-1');
-    expect(screen.getByTestId('decrement-button-10')).toHaveTextContent('-10');
-    expect(screen.getByTestId('reset-button')).toHaveTextContent('reset');
+    expect(asFragment()).toMatchSnapshot();
   });
 
   test('should render with count', async () => {

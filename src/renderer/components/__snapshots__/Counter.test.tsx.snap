@@ -1,0 +1,44 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<Counter /> should render default Counter 1`] = `
+<DocumentFragment>
+  <div>
+    <div
+      class="title"
+    >
+      counter
+    </div>
+    <button
+      data-test-id="decrement-button-10"
+    >
+      -10
+    </button>
+    <button
+      data-test-id="decrement-button-1"
+    >
+      -1
+    </button>
+    <span
+      class="count"
+      data-test-id="count"
+    >
+      0
+    </span>
+    <button
+      data-test-id="increment-button-1"
+    >
+      +1
+    </button>
+    <button
+      data-test-id="increment-button-10"
+    >
+      +10
+    </button>
+    <button
+      data-test-id="reset-button"
+    >
+      reset
+    </button>
+  </div>
+</DocumentFragment>
+`;

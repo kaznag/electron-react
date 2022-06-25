@@ -1,7 +1,7 @@
 import React from 'react';
 import { useTranslation } from 'react-i18next';
 import { Language } from '../../common/message';
-import CounterContainer from '../containers/CounterContainer';
+import CounterContainer from '../pages/home/counter/containers/CounterContainer';
 
 type MainProps = {
   language: string;

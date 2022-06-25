@@ -1,7 +1,7 @@
 import { useCallback } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { countSelector } from '../store/counter/counterSelector';
-import { decrement, increment, reset } from '../store/counter/counterSlice';
+import { countSelector } from '../../../../store/counter/counterSelector';
+import { decrement, increment, reset } from '../../../../store/counter/counterSlice';
 
 const useCounterFacade = () => {
   const count = useSelector(countSelector);

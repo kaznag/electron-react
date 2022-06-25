@@ -78,4 +78,4 @@ function Counter(props: CounterProps): JSX.Element {
   );
 }
 
-export default Counter;
+export { Counter };

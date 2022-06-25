@@ -1,5 +1,5 @@
 import React from 'react';
-import Counter from '../components/Counter';
+import { Counter } from '../components';
 import { useCounterFacade } from './CounterFacade';
 
 function CounterContainer(): JSX.Element {
@@ -15,4 +15,4 @@ function CounterContainer(): JSX.Element {
   );
 }
 
-export default CounterContainer;
+export { CounterContainer };

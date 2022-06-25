@@ -1,7 +1,7 @@
 import React from 'react';
 import { useTranslation } from 'react-i18next';
 import { Language } from '../../common/message';
-import CounterContainer from '../pages/home/counter/containers/CounterContainer';
+import { CounterContainer } from '../pages/home/counter';
 
 type MainProps = {
   language: string;
@@ -14,7 +14,7 @@ const Main: React.FC<MainProps> = (props) => {
 
   return (
     <div>
-      <CounterContainer></CounterContainer>
+      <CounterContainer />
       <h2>{t('language')}</h2>
       <select value={props.language} onChange={props.onLanguageChange}>
         {props.supportLanguages.map((o) => (

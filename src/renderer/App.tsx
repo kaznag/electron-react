@@ -1,7 +1,7 @@
 import React from 'react';
 import './App.scss';
 import { TitleBarContainer } from './shared/titleBar';
-import Main from './components/Main';
+import { Home } from './components/Home';
 import i18n from 'i18next';
 import { Language } from '../common/message';
 import './i18n';
@@ -38,7 +38,7 @@ class App extends React.Component<Props, State> {
       <div className="app">
         <TitleBarContainer />
         <div className="contents">
-          <Main
+          <Home
             language={this.state.language}
             supportLanguages={this.state.supportLanguages}
             onLanguageChange={this.onLanguageChange}

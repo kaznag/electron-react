@@ -3,13 +3,13 @@ import { useTranslation } from 'react-i18next';
 import { Language } from '../../common/message';
 import { CounterContainer } from '../pages/home/counter';
 
-type MainProps = {
+type Props = {
   language: string;
   supportLanguages: Language[];
   onLanguageChange?: (e: React.ChangeEvent<HTMLSelectElement>) => void;
 };
 
-const Main: React.FC<MainProps> = (props) => {
+const Home: React.FC<Props> = (props) => {
   const { t } = useTranslation();
 
   return (
@@ -27,4 +27,4 @@ const Main: React.FC<MainProps> = (props) => {
   );
 };
 
-export default Main;
+export { Home };

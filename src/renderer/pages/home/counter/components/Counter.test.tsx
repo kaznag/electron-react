@@ -7,7 +7,7 @@ import { Counter } from '.';
 configure({ testIdAttribute: 'data-test-id' });
 
 jest.mock('react-i18next', () => ({
-  ...jest.requireActual('react-i18next'),
+  ...(jest.requireActual('react-i18next') as any),
   useTranslation: () => {
     return {
       t: (str: string) => str,

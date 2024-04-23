@@ -2,6 +2,7 @@ import { app, BrowserWindow, globalShortcut } from 'electron';
 import * as path from 'path';
 import { EventEmitter } from 'events';
 import { ApplicationSettings } from './application-settings';
+import type { BrowserWindowConstructorOptions } from 'electron';
 
 class MainWindow extends EventEmitter {
   private readonly devToolsShortcutKey = 'CmdOrCtrl+Shift+I';
@@ -20,7 +21,7 @@ class MainWindow extends EventEmitter {
     const size = this.appSettings.getWindowSize();
     const minSize = this.appSettings.getWindowMinimumSize();
 
-    const options = {
+    const options: BrowserWindowConstructorOptions = {
       width: size.width,
       height: size.height,
       minWidth: minSize.width,
@@ -33,7 +34,6 @@ class MainWindow extends EventEmitter {
         preload: path.resolve(app.getAppPath(), 'preload.js'),
         sandbox: true,
         contextIsolation: true,
-        worldSafeExecuteJavascript: true,
       },
     };
 

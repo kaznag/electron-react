@@ -5,6 +5,7 @@ import { MainWindow } from './main-window';
 import { ApplicationSettings } from './application-settings';
 import { ChannelKey } from '../common/channel-key';
 import { TitleBarState, WindowParameter } from '../common/message';
+import type { IpcMainEvent } from 'electron';
 
 class Application {
   private readonly isDev = process.env.NODE_ENV !== 'production';
@@ -40,7 +41,7 @@ class Application {
       this.onIpcWindowMaximizeRestoreRequest()
     );
     ipcMain.on(ChannelKey.windowMinimizeRequest, () => this.onIpcWindowMinimizeRequest());
-    ipcMain.on(ChannelKey.changeLanguage, (_event: Event, language: string) =>
+    ipcMain.on(ChannelKey.changeLanguage, (_event: IpcMainEvent, language: string) =>
       this.onIpcChangeLanguage(language)
     );
     ipcMain.once(ChannelKey.windowInitialized, () => this.onIpcWindowInitialized());
